@@ -1,0 +1,94 @@
+<h1>Formulario de registro</h1>
+<app-modal-component>
+</app-modal-component>
+<div style="width: 80%;margin:auto">
+    <p style="text-align:center">Holaaaaa!<br>Bienvenidos a la Manada de Oreo ♥</p>
+    <ul>
+        <li>Completa el formulario de adopción que estás diligenciando en este momento</li>
+        <li>Tu formulario será revisado y aprobado por nuestro equipo de adopciones</li>
+        <li>Te contactaremos para programar entrevista, ya sea virtual o física</li>
+        <li>Si se aprueba la adopción, firmamos un contrato de adopción, compromiso de esterilización ( en caso de que el peludo no este esterilizado) y coordinamos entrega de la mascota</li>
+        <li>Tras la adopción, seguiremos en contacto para verificar cómo marcha todo. Te pediremos fotos y vídeos para el seguimiento.</li>
+    </ul>
+    <p>✅ Ten en cuenta que los peludos que se entregan en adopción, son peludos en su mayoría rescatados de la calle, por tal motivo NO cuentan con las mejores condiciones de salud.
+    <br>El proceso dura máximo 5 días hábiles, tiempo estimado en el cual recibirá una respuesta.<br>✅ Fotos o vídeo del hogar y los integrantes de la familia (No queremos las fotos para juzgar su vida, la información que usted nos da es 100% confidencial). Pero si necesitamos ver el lugar donde el peludo estará. Si no envía fotos su solicitud será RECHAZADA.
+    <br>✅Enviar la fotos al correo lamanadadeoreo5@gmail.com, y adjuntar imagen del envió exitoso del formulario, con el asunto " Solicitud adopción (NOMBRE DEL PELUDO).</p>
+</div>
+<div class="container">
+    <div style="text-align:center">
+        <h2>Ten presente:</h2>
+        <p>¡El diligenciamiento de este formulario no garantiza la adopción del peludo, registrando este formulario usted entra a un proceso de estudio, para garantizar la mejor familia a nuestro peludo!
+        <br>LA ESTERILIZACIÓN Y VACUNACIÓN DE LOS PELUDOS NO SON NEGOCIABLES, ESTO LO HACEMOS PARA EVITAR ABANDONOS Y SOBREPOBLACION ANIMAL.</p>
+        </div>
+    <form [formGroup]="infoMascota">
+        <p>
+            <label class="col-25">Fecha de solicitud:</label>
+            <input type="date" class="form-control col-75" formControlName="date">
+        </p>
+        <p>
+            <label class="col-25">Buscas:</label>
+            <select formControlName="mascota" class="form-control col-75">
+                <option value="perro">Perro</option>
+                <option value="gato">Gato</option>
+            </select>
+        </p>
+        <div style="display: inline-flex;">
+            <p>¿A qué perrito deseas adoptar?</p><br>
+            <p *ngFor="let item of Mascotas">
+                <label class="col-25">{{item.nombre}}</label>
+                <img [src]=item.img alt="">
+                <input type="radio" class="form-control col-75" formControlName="nommascota" name="{{item.nombre}}">
+            </p>
+        </div>
+        <p>
+            <label class="col-25">¿Desea cambiarle el nombre?</label>
+            <select formControlName="cambionombre" class="form-control col-75">
+                <option value="si">Si</option>
+                <option value="no">No</option>
+            </select>
+        </p>
+        <p>
+            <label class="col-25">¿Qué nombre le pondrás? si tu respuesta fue "No" completar con NA: </label>
+            <input type="text" class="form-control col-75" formControlName="nuevonombre">
+        </p>
+    </form>
+    <h2>INFORMACIÓN BÁSICA DEL ADOPTANTE</h2>
+    <form [formGroup]="infoAdoptante">
+        <p>
+            <label class="col-25">Nombre: </label>
+            <input type="text" class="form-control col-75" formControlName="name">
+        </p>
+        <p>
+            <label class="col-25">Apellido: </label>
+            <input type="text" class="form-control col-75" formControlName="lastname">
+        </p>
+        <p>
+            <label class="col-25">Fecha de nacimiento:</label>
+            <input type="date" class="form-control col-75" formControlName="birthdate">
+        </p>
+        <p>
+            <label class="col-25">Edad: </label>
+            <input type="number" class="form-control col-75" formControlName="age">
+        </p>
+        <p>
+            <label class="col-25">Nacionalidad:</label>
+            <select class="form-control col-75">
+                <option formControlName="pais" *ngFor="let item of Nacionalidad" [value]=item.nationality >{{item.nationality}}</option>
+            </select>
+        </p>
+        <p>
+            <label class="col-25">Estado civil:</label>
+            <select class="form-control col-75">
+                <option formControlName="estadocivil"  value="casado">Casado</option>
+                <option formControlName="estadocivil"  value="soltero">Soltero</option>
+                <option formControlName="estadocivil"  value="unionlibre">Union libre</option>
+                <option formControlName="estadocivil"  value="separado">Separado</option>
+            </select>
+        </p>
+        <p>
+            <label class="col-25">Correo: </label>
+            <input type="email" class="form-control col-75" formControlName="email">
+        </p>
+        <button class="btn" type="submit">Enviar</button>
+    </form>
+</div>

@@ -1,0 +1,50 @@
+.modal{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding: 1em;
+    background-color: rgba(0,0,0,0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    z-index: 999999;
+}
+.modal .modal-contenido{
+    width: 100%;
+    max-width: 50em;
+}
+.modal .modal-header{
+    height: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3em;
+    background-color: rgb(173, 217, 255);
+    border-radius: 2em 2em 0 0;
+}
+.modal img{
+    height: 2em;
+    width: 2em;
+}
+.modal img:hover{
+    cursor: pointer;
+}
+.modal .modal-title{
+    font-size: 2em;
+    font-weight: 600;
+    color: black;
+}
+.modal .modal-contenedor{
+    padding: 2em;
+    background-color: azure;
+    border-radius: 0 0 2em 2em;
+}
+.modal .texto-titulo{
+    line-height: 0.5em;
+}
+.modal .texto-titulo h1{
+    margin-top: 1em;
+}

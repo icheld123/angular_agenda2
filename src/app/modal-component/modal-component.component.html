@@ -1,0 +1,21 @@
+<ng-container *ngIf="show">
+    <div class="modal">
+        <div class="modal-contenido">
+            <div class="modal-header">
+                <div class="texto-titulo">
+                    <h1 class="modal-title">{{title}}</h1>
+                    <p>Lee toda la información a continuación para poder llenar el formulario:</p>
+                </div>
+                <ng-template [ngTemplateOutlet]="closeIcon"></ng-template>
+            </div>
+            <div class="modal-contenedor" *ngFor="let item of Reglas | paginate:{itemsPerPage: 1, currentPage:p}">
+                <h3>{{item.encabezado}}</h3>
+                <ul><li *ngFor="let i of item.contenido">{{i}}</li></ul>
+                <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-template #closeIcon>
+    <img src="https://cdn.icon-icons.com/icons2/1509/PNG/512/windowclose_104378.png" alt="" (click)="showModal()">
+</ng-template>

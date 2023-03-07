@@ -1,0 +1,15 @@
+<p>slider-component works!</p>
+<div *ngIf="images">
+    <div class="mySlides slideshow-container">
+        <img *ngFor="let image of images; let i=index" 
+            [src]="image.src" 
+            [ngClass]="{'image-active': slideIndex == i}">  
+  
+        <div style="text-align:center; display:inline-block;"  *ngFor="let dot of images; let i=index">
+            <span class="dot" 
+                (click)="selectImage(i)"
+                [ngClass]="{'active': slideIndex == i}">
+            </span>
+        </div>
+    </div>
+</div>

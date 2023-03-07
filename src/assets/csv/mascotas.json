@@ -1,0 +1,32 @@
+[
+    {
+        "nombre":"Bruno",
+        "tamano": "mediano",
+        "edad": "3 años",
+        "img":"https://cdn.icon-icons.com/icons2/85/PNG/128/labrador_dog_animal_15967.png"
+    },
+    {
+        "nombre":"Bongo",
+        "tamano": "mediano",
+        "edad": "2 años",
+        "img":"https://cdn.icon-icons.com/icons2/85/PNG/128/labrador_dog_animal_15967.png"
+    },
+    {
+        "nombre":"Dublin",
+        "tamano": "grande",
+        "edad": "2 años",
+        "img":"https://cdn.icon-icons.com/icons2/85/PNG/128/labrador_dog_animal_15967.png"
+    },
+    {
+        "nombre":"Lucas",
+        "tamano": "mediano",
+        "edad": "1 año y medio",
+        "img":"https://cdn.icon-icons.com/icons2/85/PNG/128/labrador_dog_animal_15967.png"
+    },
+    {
+        "nombre":"Kimbo",
+        "tamano": "mediano",
+        "edad": "3 años",
+        "img":"https://cdn.icon-icons.com/icons2/85/PNG/128/labrador_dog_animal_15967.png"
+    }
+]

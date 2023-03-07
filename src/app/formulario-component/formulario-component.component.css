@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+}
+h1{
+    text-align: center;
+    background-color: lightcoral;
+    width: 100%;
+    margin: 1em auto;
+    padding: 0.5em;
+}
+.container{
+    margin: auto;
+    width: 60%;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+form{
+    display: block;
+    margin: 2em;
+}
+form .btn {
+    margin-top: 1em;
+    width: 100%;
+    background-color: lightcoral;
+    border-color: lightcoral;
+    border-radius: 5px;
+    font-size: 1em;
+}
+form .btn:hover{
+    cursor: pointer;
+    background-color:coral;
+    border-color: coral;
+}
+.col-25 {
+    float: left;
+    width: 30%;
+    margin: 0.5em -2em 1em 1em;
+}
+.col-75 {
+    
+    float: left;
+    width: 20%;
+    margin-top: 6px;
+}
