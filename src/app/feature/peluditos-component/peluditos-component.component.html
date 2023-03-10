@@ -1,0 +1,40 @@
+<app-filtro-component></app-filtro-component>
+<div class="container text-center">
+
+  <h2>Peluditos esperando por ti!</h2>
+  <span>Cantidad: {{cantidasAnimales}}</span>
+  </div>
+
+  <div class="shell">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3" *ngFor = "let animal of animalesFiltrados; index as i">
+          <div class="wsk-cp-product">
+            <div class="wsk-cp-img">
+              <img src="https://3.bp.blogspot.com/-eDeTttUjHxI/WVSvmI-552I/AAAAAAAAAKw/0T3LN6jABKMyEkTRUUQMFxpe6PLvtcMMwCPcBGAYYCw/s1600/001-culture-clash-matthew-gianoulis.jpg" alt="Product" class="img-responsive" />
+            </div>
+            <div class="wsk-cp-text">
+              <div class="category">
+                <span>{{animal.especie}}</span>
+              </div>
+              <div class="title-product">
+                <h3>{{animal.nombre}}</h3>
+              </div>
+              <div class="description-prod">
+                <p>Edad: {{animal.edad}} meses</p>
+                <p>Raza: {{animal.raza}}</p>
+                <p>Tamaño: {{animal.tamano}}</p>
+                <a href="">Conoce mas sobre mi</a>
+              </div>
+              <div class="card-footer">
+                <div class="wcf-left"><a href="/adoptar?index={{i}}" class="btn-peluditos"><i class="fa fa-paw"></i> Adoptar</a></div>
+                <div class="wcf-right"><a href="/apadrinar?index={{i}}" class="btn-peluditos"><i class="fa fa-handshake-o"></i> Ayudar</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

@@ -25,8 +25,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/igniteui-angular/styles/igniteui-angular.css"
+              "src/styles.css"
             ],
             "scripts": [
               "./node_modules/hammerjs/hammer.min.js"
@@ -96,10 +95,10 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/igniteui-angular/styles/igniteui-angular.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
             ],
             "scripts": [
-              "./node_modules/hammerjs/hammer.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
@@ -110,5 +109,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "5608ce75-a013-490c-a675-25a655ffbb18"
   }
 }

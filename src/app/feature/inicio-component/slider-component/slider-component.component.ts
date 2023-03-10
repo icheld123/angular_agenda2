@@ -32,10 +32,10 @@ export class SliderComponentComponent implements OnInit {
     let slides = document.getElementsByClassName("mySlides");
     let dots = document.getElementsByClassName("dot");
     for (i = 0; i < this.images.length; i++) {
-      (<HTMLElement>slides[i]).style.display = "none";  
+      (<HTMLElement>slides[i]).style.display = "none";
     }
     this.slideIndex++;
-    if (this.slideIndex > this.images.length) {this.slideIndex = 1}    
+    if (this.slideIndex > this.images.length) {this.slideIndex = 1}
     for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
     }

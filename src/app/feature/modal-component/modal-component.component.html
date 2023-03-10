@@ -11,7 +11,7 @@
             <div class="modal-contenedor" *ngFor="let item of Reglas | paginate:{itemsPerPage: 1, currentPage:p}">
                 <h3>{{item.encabezado}}</h3>
                 <ul><li *ngFor="let i of item.contenido">{{i}}</li></ul>
-                <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+                <!-- <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls> -->
             </div>
         </div>
     </div>

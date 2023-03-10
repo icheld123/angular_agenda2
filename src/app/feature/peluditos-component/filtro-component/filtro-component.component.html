@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+  <div class="sidenav" id="mySidenav" [style.width]="valueWidth">
+    <div class="container-md" id="filtros">
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeFilter()"></button>
+        <!-- <button type="button" class="btn-close" aria-label="Close" (click)="closeFilter()"></button> -->
+
+
+        <form [formGroup]="filtroForm" #myForm="ngForm" (ngSubmit)="iniciarFiltro()">
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseOne">
+                  Especie
+                </button>
+              </h2>
+              <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" role="switch" type="checkbox" id="perro" name="perro" formControlName="perro" value="especie">
+                        <label class="form-check-label" for="perro">Perro</label><br>
+                        <input class="form-check-input" role="switch" type="checkbox" id="gato" name="gato" formControlName="gato" value="especie">
+                        <label class="form-check-label" for="gato">Gato</label><br>
+                    </div>
+                </div>
+              </div>
+            </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Sexo
+                  </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                      <div class="form-check form-switch">
+                          <input class="form-check-input" role="switch" type="checkbox" id="hembra" name="hembra" formControlName="hembra" value="sexo">
+                          <label class="form-check-label" for="hembra">Hembra</label><br>
+                          <input class="form-check-input" role="switch" type="checkbox" id="macho" name="macho" formControlName="macho" value="sexo">
+                          <label class="form-check-label" for="macho">Macho</label><br>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                      Edad
+                    </button>
+                  </h2>
+                  <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                      <div class="row g-3">
+                          <div class="col-sm">
+                            <input type="number" class="form-control indiferente" placeholder="Desde (meses)" aria-label="Desde" id="desde" formControlName="desde">
+                          </div>
+                      </div>
+                      <div class="row g-3">
+                        <div class="col-sm">
+                          <input type="number" class="form-control indiferente" placeholder="hasta (meses)" aria-label="hasta" id="hasta" formControlName="hasta">
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    Tamaño
+                  </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                      <div class="form-check form-switch">
+                          <input class="form-check-input" role="switch" type="checkbox" id="grande" name="grande" value="tamano" formControlName="grande">
+                          <label class="form-check-label" for="grande">Grande</label><br>
+                          <input class="form-check-input" role="switch" type="checkbox" id="mediano" name="mediano" value="tamano" formControlName="mediano">
+                          <label class="form-check-label" for="mediano">Mediano</label><br>
+                          <input class="form-check-input" role="switch" type="checkbox" id="pequeño" name="pequeño" value="tamano" formControlName="pequeño">
+                          <label class="form-check-label" for="pequeño">Pequeño</label><br>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    Características
+                  </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                      <div class="form-check form-switch">
+                          <input class="form-check-input" role="switch" type="checkbox" id="convivenciaGatos" name="convivenciaGatos" value="convivenciaGatos" formControlName="convivenciaGatos">
+                          <label class="form-check-label" for="convivenciaGatos">Amistoso con gatos</label><br>
+                          <input class="form-check-input" role="switch" type="checkbox" id="convivenciaPerros" name="convivenciaPerros" value="convivenciaPerros" formControlName="convivenciaPerros">
+                          <label class="form-check-label" for="convivenciaPerros">Amistoso con perros</label><br>
+                          <input class="form-check-input" role="switch" type="checkbox" id="convivenciaNinos" name="convivenciaNinos" value="convivenciaNinos" formControlName="convivenciaNinos">
+                          <label class="form-check-label" for="convivenciaNinos">Amistoso con niños</label><br>
+                          <input class="form-check-input indiferente" role="switch" type="checkbox" id="esterilizacion" name="esterilizacion" value="esterilizacion" formControlName="esterilizacion">
+                          <label class="form-check-label" for="esterilizacion">Esterilizado</label><br>
+                          <input class="form-check-input indiferente" role="switch" type="checkbox" id="vacunas" name="vacunas" value="vacunas" formControlName="vacunas">
+                          <label class="form-check-label" for="vacunas">Vacunado</label><br>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="filtrarEspecifico" onclick="iniciarFiltro()">Filtrar</button>
+            <!-- <button type="submit" style="visibility: hidden;" class="btn btn-primary" id="filtrarTodo" onclick="iniciar()">Ver todos</button> -->
+        </form>
+
+    </div>
+  </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!-- <script src="/googleAPI.js"></script>
+    <script src="/filter.js"></script> -->
+    <!-- <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script> -->
+
+    <div class="container-md mt-3">
+      <button class="btn-filter" (click)="openFilter()"><i class="fa fa-filter"></i> Abrir filtro</button>
+    </div>
+
+
+
+</body>
+</html>
+
