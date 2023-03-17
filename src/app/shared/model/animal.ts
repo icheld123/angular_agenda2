@@ -15,9 +15,10 @@ export class Animal {
   estado: string;
   ubicacion: string;
   especie: string;
+  imagen: string;
 
   constructor(nombre: string, edad: number, raza: string, tamano: string, sexo: string, vacunas: boolean, esterilizacion: boolean, enfermedades: boolean, convivenciaGatos: boolean,
-    convivenciaPerros: boolean, convivenciaNinos: boolean, cualidades: string, descripcion: string, estado: string, ubicacion: string, especie: string){
+    convivenciaPerros: boolean, convivenciaNinos: boolean, cualidades: string, descripcion: string, estado: string, ubicacion: string, especie: string, imagen: string){
       this.nombre = nombre;
       this.edad = edad;
       this.raza = raza;
@@ -34,5 +35,6 @@ export class Animal {
       this.estado = estado;
       this.ubicacion = ubicacion;
       this.especie = especie;
+      this.imagen = imagen;
   }
 }

@@ -77,7 +77,7 @@ export class FormularioComponentComponent {
                               this.stringToBoolean(element[5]),this.stringToBoolean(element[6]),
                               this.stringToBoolean(element[7]),this.stringToBoolean(element[8]),
                               this.stringToBoolean(element[9]),this.stringToBoolean(element[10]),
-                              element[11],element[12],element[13],element[14],element[15]);
+                              element[11],element[12],element[13],element[14],element[15],element[16]);
       this.peludos.push(animal);
     }
 }

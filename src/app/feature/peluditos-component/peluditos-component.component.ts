@@ -22,6 +22,7 @@ export class PeluditosComponent implements OnInit{
   public cantidasAnimales: number;
   public responseRequest: ResponseRequest;
   public contentModal:Animal;
+  public urlConsulta:string;
   // private modalInfoextraComponent = new ModalInfoextraComponent("nombre perro", "descripción perro");
   //private modalInfoextraComponent: ModalInfoextraComponent
   // public encabezadosUnicos: string[];
@@ -31,22 +32,22 @@ export class PeluditosComponent implements OnInit{
   }
 
 
-  async listarPeludosConReturn() {
-    let totalAnimales = [];
-    let responseRequestAux: ResponseRequest;
-    responseRequestAux = await this.httpService.get(environment.endpoint, environment.apiRoute, params).toPromise().then();
+  // async listarPeludosConReturn() {
+  //   let totalAnimales = [];
+  //   let responseRequestAux: ResponseRequest;
+  //   responseRequestAux = await this.httpService.get(environment.endpoint, environment.apiRoute, params).toPromise().then();
 
-    for (let index = 1; index < this.responseRequest.values.length; index++) {
-      const element = this.responseRequest.values[index];
-      let animal = new Animal(element[0],parseInt(element[1]),element[2],element[3],element[4],
-                              this.stringToBoolean(element[5]),this.stringToBoolean(element[6]),
-                              this.stringToBoolean(element[7]),this.stringToBoolean(element[8]),
-                              this.stringToBoolean(element[9]),this.stringToBoolean(element[10]),
-                              element[11],element[12],element[13],element[14],element[15]);
-      totalAnimales.push(animal);
-    }
-    return totalAnimales;
-  }
+  //   for (let index = 1; index < this.responseRequest.values.length; index++) {
+  //     const element = this.responseRequest.values[index];
+  //     let animal = new Animal(element[0],parseInt(element[1]),element[2],element[3],element[4],
+  //                             this.stringToBoolean(element[5]),this.stringToBoolean(element[6]),
+  //                             this.stringToBoolean(element[7]),this.stringToBoolean(element[8]),
+  //                             this.stringToBoolean(element[9]),this.stringToBoolean(element[10]),
+  //                             element[11],element[12],element[13],element[14],element[15]);
+  //     totalAnimales.push(animal);
+  //   }
+  //   return totalAnimales;
+  // }
 
   async listarPeludos(){
     this.animales = [];
@@ -60,7 +61,7 @@ export class PeluditosComponent implements OnInit{
                               this.stringToBoolean(element[5]),this.stringToBoolean(element[6]),
                               this.stringToBoolean(element[7]),this.stringToBoolean(element[8]),
                               this.stringToBoolean(element[9]),this.stringToBoolean(element[10]),
-                              element[11],element[12],element[13],element[14],element[15]);
+                              element[11],element[12],element[13],element[14],element[15],element[16]);
       this.animales.push(animal);
       this.animalesFiltrados.push(animal);
     }
@@ -171,8 +172,19 @@ export class PeluditosComponent implements OnInit{
     else return false;
   }
 
+  private whereIs(){
+
+  }
+
   ngOnInit(){
-    this.contentModal = new Animal("",0,"","","",false,false,false,false,false,false,"","","","","")
+    this.contentModal = new Animal("",0,"","","",false,false,false,false,false,false,"","","","","","");
+    let ubicacionActual = window.location.href;
+    if (ubicacionActual.indexOf("localhost") > 0 || ubicacionActual.indexOf("127.0.0.1") > 0){
+      this.urlConsulta = "../../assets/image/";
+    }
+    else {
+      this.urlConsulta = "assets/image/";
+    }
   }
 
 }
