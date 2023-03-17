@@ -3,6 +3,7 @@ import { Animal } from 'src/app/shared/model/animal';
 import { ResponseRequest } from 'src/app/shared/model/responseRequest';
 import { HttpgeneralService } from 'src/app/shared/service/httpgeneral.service';
 import { environment } from 'src/environments/environment';
+// import { ModalInfoextraComponent } from './modal-infoextra/modal-infoextra.component';
 
 const params = {
   majorDimension: environment.majorDimension,
@@ -20,10 +21,31 @@ export class PeluditosComponent implements OnInit{
   public animalesFiltrados:Array<Animal>;
   public cantidasAnimales: number;
   public responseRequest: ResponseRequest;
+  public contentModal:Animal;
+  // private modalInfoextraComponent = new ModalInfoextraComponent("nombre perro", "descripción perro");
+  //private modalInfoextraComponent: ModalInfoextraComponent
   // public encabezadosUnicos: string[];
 
   constructor(private httpService: HttpgeneralService){
     this.listarPeludos();
+  }
+
+
+  async listarPeludosConReturn() {
+    let totalAnimales = [];
+    let responseRequestAux: ResponseRequest;
+    responseRequestAux = await this.httpService.get(environment.endpoint, environment.apiRoute, params).toPromise().then();
+
+    for (let index = 1; index < this.responseRequest.values.length; index++) {
+      const element = this.responseRequest.values[index];
+      let animal = new Animal(element[0],parseInt(element[1]),element[2],element[3],element[4],
+                              this.stringToBoolean(element[5]),this.stringToBoolean(element[6]),
+                              this.stringToBoolean(element[7]),this.stringToBoolean(element[8]),
+                              this.stringToBoolean(element[9]),this.stringToBoolean(element[10]),
+                              element[11],element[12],element[13],element[14],element[15]);
+      totalAnimales.push(animal);
+    }
+    return totalAnimales;
   }
 
   async listarPeludos(){
@@ -45,6 +67,10 @@ export class PeluditosComponent implements OnInit{
     this.cantidasAnimales = this.animalesFiltrados.length;
 
     //console.log(this.animales);
+  }
+
+  async cambiarContenidoModal(animal: Animal){
+    this.contentModal = animal;
   }
 
   async filtrarPeludos(datosForm: any, categoriasFiltro: any, categoriasUnicas:Array<string>){
@@ -73,7 +99,7 @@ export class PeluditosComponent implements OnInit{
     this.cantidasAnimales = this.animalesFiltrados.length;
   }
 
-  public validarValueAnimal(animal:Animal, categoriaUnica:string, llavesAgrupadasPorCategoriaExcel:string[], datosForm: any, validar:boolean){
+  public validarValueAnimal(animal:Animal, categoriaUnica:string, llavesAgrupadasPorCategoriaExcel:string[], datosForm: any, validar:boolean): boolean{
     // Si llavesAgrupadasPorCategoriaExcel > 1, entonces debe ser un string que debe validarse entre los
     // posibles checkbox. Ej. tamano -> puede ser grande, mediano, pequeno.
     let valorAtributoAnimal = animal[categoriaUnica as keyof typeof animal];
@@ -130,7 +156,7 @@ export class PeluditosComponent implements OnInit{
     return validar;
   }
 
-  public agruparLlavesPorCategoria(llavesFiltro: string[], categoriasFiltro:any, categoriaUnica:string){
+  public agruparLlavesPorCategoria(llavesFiltro: string[], categoriasFiltro:any, categoriaUnica:string): string[]{
     let llavesAgrupadasPorCategoriaExcel = [];
     for(let j = 0; j < llavesFiltro.length; j++){
       if (categoriasFiltro[llavesFiltro[j]] == categoriaUnica){
@@ -146,6 +172,7 @@ export class PeluditosComponent implements OnInit{
   }
 
   ngOnInit(){
+    this.contentModal = new Animal("",0,"","","",false,false,false,false,false,false,"","","","","")
   }
 
 }

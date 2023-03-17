@@ -1,4 +1,5 @@
 <app-filtro-component></app-filtro-component>
+
 <div class="container text-center">
 
   <h2>Peluditos esperando por ti!</h2>
@@ -24,7 +25,7 @@
                 <p>Edad: {{animal.edad}} meses</p>
                 <p>Raza: {{animal.raza}}</p>
                 <p>Tamaño: {{animal.tamano}}</p>
-                <a href="">Conoce mas sobre mi</a>
+                <button (click)="cambiarContenidoModal(animal)" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">Conoce mas sobre mi</button>
               </div>
               <div class="card-footer">
                 <div class="wcf-left"><a href="/adoptar?index={{i}}" class="btn-peluditos"><i class="fa fa-paw"></i> Adoptar</a></div>
@@ -36,5 +37,36 @@
       </div>
     </div>
   </div>
+
+
+<div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">{{(contentModal.nombre) ? contentModal.nombre : ""}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Especie: {{contentModal.especie}}</p>
+        <p>Sexo: {{contentModal.sexo}}</p>
+        <p>Edad: {{contentModal.edad}}</p>
+        <p>Raza: {{contentModal.raza}}</p>
+        <p>Vacunas: {{(contentModal.vacunas) ? "✅" : "❌"}}</p>
+        <p>{{(contentModal.sexo.toLowerCase() == "macho") ? "Esterilizado: " : "Esterilizada: "}} {{(contentModal.esterilizacion) ? "✅" : "❌"}}</p>
+        <p>Me gustan los gatos: {{(contentModal.convivenciaGatos) ? "✅" : "❌"}}</p>
+        <p>Me gustan los perros: {{(contentModal.convivenciaPerros) ? "✅" : "❌"}}</p>
+        <p>Me gustan los niños: {{(contentModal.convivenciaNinos) ? "✅" : "❌"}}</p>
+        <p>Cualidades: {{contentModal.cualidades}}</p>
+        <p>Descripción: {{contentModal.descripcion}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 

@@ -15,45 +15,170 @@
     <br>✅Enviar la fotos al correo lamanadadeoreo5@gmail.com, y adjuntar imagen del envió exitoso del formulario, con el asunto " Solicitud adopción (NOMBRE DEL PELUDO).</p>
 </div>
 <div class="container">
-    <div style="text-align:center">
-        <h2>Ten presente:</h2>
-        <p>¡El diligenciamiento de este formulario no garantiza la adopción del peludo, registrando este formulario usted entra a un proceso de estudio, para garantizar la mejor familia a nuestro peludo!
-        <br>LA ESTERILIZACIÓN Y VACUNACIÓN DE LOS PELUDOS NO SON NEGOCIABLES, ESTO LO HACEMOS PARA EVITAR ABANDONOS Y SOBREPOBLACION ANIMAL.</p>
-        </div>
-    <form [formGroup]="infoMascota">
-        <p>
-            <label class="col-25">Fecha de solicitud:</label>
-            <input type="date" class="form-control col-75" formControlName="date">
-        </p>
-        <p>
-            <label class="col-25">Buscas:</label>
-            <select formControlName="mascota" class="form-control col-75">
-                <option value="perro">Perro</option>
-                <option value="gato">Gato</option>
-            </select>
-        </p>
-        <div style="display: inline-flex;">
-            <p>¿A qué perrito deseas adoptar?</p><br>
-            <p *ngFor="let item of Mascotas">
-                <label class="col-25">{{item.nombre}}</label>
-                <img [src]=item.img alt="">
-                <input type="radio" class="form-control col-75" formControlName="nommascota" name="{{item.nombre}}">
-            </p>
-        </div>
-        <p>
-            <label class="col-25">¿Desea cambiarle el nombre?</label>
-            <select formControlName="cambionombre" class="form-control col-75">
-                <option value="si">Si</option>
-                <option value="no">No</option>
-            </select>
-        </p>
-        <p>
-            <label class="col-25">¿Qué nombre le pondrás? si tu respuesta fue "No" completar con NA: </label>
-            <input type="text" class="form-control col-75" formControlName="nuevonombre">
-        </p>
-    </form>
-    <h2>INFORMACIÓN BÁSICA DEL ADOPTANTE</h2>
-    <form [formGroup]="infoAdoptante">
+  <div style="text-align:center">
+    <h2>Ten presente:</h2>
+    <p>¡El diligenciamiento de este formulario no garantiza la adopción del peludo, registrando este formulario usted entra a un proceso de estudio, para garantizar la mejor familia a nuestro peludo!
+    <br>LA ESTERILIZACIÓN Y VACUNACIÓN DE LOS PELUDOS NO SON NEGOCIABLES, ESTO LO HACEMOS PARA EVITAR ABANDONOS Y SOBREPOBLACION ANIMAL.</p>
+    </div>
+      <!-- [formGroup]="infoMascota" -->
+  <form>
+    <p> Fecha de solicitud: {{date.getDate()}}/{{date.getMonth()}}/{{date.getFullYear()}}</p>
+    <p>
+        <label >Buscas: </label>
+        <select name="especie">
+            <option value="perro">Perro</option>
+            <option value="gato">Gato</option>
+        </select>
+    </p>
+    <p>
+      <label>¿A qué perrito deseas adoptar?</label>
+      <select name="peludo">
+        <option *ngFor="let peludo of peludos; index as i" value={{i}}>{{i}} - {{peludo.nombre}} - {{peludo.edad}} meses - {{peludo.tamano}}</option>
+      </select>
+    </p>
+    <p>
+      <label>¿Desea cambiarle el nombre?</label>
+      <select (change)="prueba()" [(ngModel)]="selectedOptionCambioNombre" name="cambionombre">
+          <option value=1>Si</option>
+          <option value=0 selected>No</option>
+      </select>
+    </p>
+    <p *ngIf="selectedOptionCambioNombre == true">
+      <label>¿Qué nombre le pondrás?</label>
+      <input type="text" name="nuevonombre" value="N/A">
+    </p>
+
+
+    <h3>Información básica del adoptante</h3>
+    <p>
+      <label>Nombre(s): </label>
+      <input type="text" name="nombres">
+    </p>
+    <p>
+      <label>Apellidos: </label>
+      <input type="text" name="apellidos">
+    </p>
+    <p>
+      <label>Fecha de nacimiento: </label>
+      <input type="date" name="nacimiento" (change)="calcularEdad()" [(ngModel)]="fechaNacimiento">
+      - Edad: {{(fechaNacimiento) ? edad : 0}}
+    </p>
+    <p>
+      <label>Nacionalidad:</label>
+      <select name="nacionalidad">
+          <option *ngFor="let item of Nacionalidad" [value]=item.nationality >{{item.nationality}}</option>
+      </select>
+    </p>
+    <p>
+      <label>Estado civil:</label>
+      <select name="estadocivil">
+          <option value="casado">Casado</option>
+          <option value="soltero">Soltero</option>
+          <option value="unionlibre">Union libre</option>
+          <option value="separado">Separado</option>
+      </select>
+    </p>
+    <p>
+      <label>Correo: </label>
+      <input type="email" value="example@example.com">
+    </p>
+    <p>
+      <label>Celular: </label>
+      <input type="number" value="3140000000">
+    </p>
+    <p>
+      <label>Departamento:</label>
+      <select [(ngModel)]="selectedDepartamento" (change)="definirMunicipiosPorDepartamentos()" name="departamento">
+          <option *ngFor="let item of DEPARTAMENTOS" [value]=item.name >{{item.name}}</option>
+      </select>
+    </p>
+    <p>
+      <label>Municipio:</label>
+      <select name="municipio">
+          <option *ngFor="let item of municipios" [value]=item >{{item}}</option>
+      </select>
+    </p>
+    <p *ngIf="validadorSelectedCapital">
+      <label>Barrio y localidad:</label>
+      <input type="text" name="localidad" [value]="(validadorSelectedCapital) ? '' : 'N/A'">
+    </p>
+    <p>
+      <label>Dirección de residencia:</label>
+      <input type="text" name="direccion" value="cll 4sur 23 42 Los girasoles">
+    </p>
+    <p>
+      <label>Vivienda</label>
+      <select name="vivienda">
+          <option value="Apartamento">Apartamento</option>
+          <option value="Casa">Casa</option>
+          <option value="Finca">Finca</option>
+          <option value="Otro">Otro</option>
+      </select>
+    </p>
+    <p>
+      <label>Tipo de vivienda</label>
+      <select name="tipovivienda" [(ngModel)]="selectedTipoVivienda">
+          <option value="Propia">Propia</option>
+          <option value="Arriendo">Arriendo</option>
+          <option value="Familiar">Familiar</option>
+          <option value="Compartida">Compartida</option>
+      </select>
+    </p>
+    <p *ngIf="(selectedTipoVivienda == 'Arriendo') ? true : false">
+      <label for="tiempoviviendo">Cuánto tiempo llevas viviendo allí? (meses)</label>
+      <input type="number" name="tiempoviviendo" value="cll 4sur 23 42 Los girasoles">
+      <label>Permiten mascotas?</label>
+      <select name="permitenmascotas">
+        <option value=1 selected>Si</option>
+        <option value=0>No</option>
+    </select>
+    </p>
+    <p>
+      <label for="cambiodecasa">En caso de tener que cambiarte de casa, qué pasará con la mascota?</label>
+      <textarea name="cambiodecasa" rows="4" cols="50"></textarea>
+    </p>
+
+    <h3>Información laboral del adoptante</h3>
+    <p>
+      <label for="empresatrabajo">Nombre de la empresa donde trabajas:</label>
+      <input type="text" name="empresatrabajo">
+    </p>
+    <p>
+      <label for="cargoempresa">Cargo que ocupas:</label>
+      <input type="text" name="cargoempresa">
+    </p>
+    <p>
+      <label for="tipocontrato">Tipo de contrato</label>
+      <select name="tipocontrato">
+          <option value="Indefinido">Indefinido</option>
+          <option value="Obra">Obra o labor</option>
+          <option value="Fijo">Fijo</option>
+          <option value="Renovable">Renovable</option>
+          <option value="dias">trabajo por días</option>
+      </select>
+    </p>
+    <p>
+      <label>Dirección del trabajo:</label>
+      <input type="text" name="direcciontrabajo" value="cll 4sur 23 42 Los girasoles">
+    </p>
+    <p>
+      <label>Teléfono del trabajo:</label>
+      <input type="number" name="telefonotrabajo">
+    </p>
+    <p>
+      <label for="horariotrabajo">Horario para ir a trabajar:</label>
+      <input type="text" name="horariotrabajo">
+    </p>
+    <p>
+      <label for="facebook">Enlace o link de Facebook personal:</label>
+      <input type="link" name="facebook">
+    </p>
+    <p>
+      <label for="facebook">Enlace o link de instagram personal:</label>
+      <input type="link" name="facebook">
+    </p>
+  </form>
+     <!--<form >
         <p>
             <label class="col-25">Nombre: </label>
             <input type="text" class="form-control col-75" formControlName="name">
@@ -90,5 +215,5 @@
             <input type="email" class="form-control col-75" formControlName="email">
         </p>
         <button class="btn" type="submit">Enviar</button>
-    </form>
+    </form> -->
 </div>

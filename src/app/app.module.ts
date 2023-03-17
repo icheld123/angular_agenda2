@@ -31,7 +31,7 @@ import { FiltroComponentComponent } from './feature/peluditos-component/filtro-c
     ModalComponentComponent,
     SliderComponentComponent,
     ApadrinarComponent,
-    FiltroComponentComponent,
+    FiltroComponentComponent
   ],
   imports: [
     ReactiveFormsModule,
