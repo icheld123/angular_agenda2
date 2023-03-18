@@ -1,4 +1,5 @@
 export class Animal {
+  id: number;
   nombre: string;
   edad: number;
   raza: string;
@@ -17,8 +18,9 @@ export class Animal {
   especie: string;
   imagen: string;
 
-  constructor(nombre: string, edad: number, raza: string, tamano: string, sexo: string, vacunas: boolean, esterilizacion: boolean, enfermedades: boolean, convivenciaGatos: boolean,
+  constructor(id: number, nombre: string, edad: number, raza: string, tamano: string, sexo: string, vacunas: boolean, esterilizacion: boolean, enfermedades: boolean, convivenciaGatos: boolean,
     convivenciaPerros: boolean, convivenciaNinos: boolean, cualidades: string, descripcion: string, estado: string, ubicacion: string, especie: string, imagen: string){
+      this.id = id;
       this.nombre = nombre;
       this.edad = edad;
       this.raza = raza;
