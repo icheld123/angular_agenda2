@@ -26,7 +26,9 @@ export class PeluditosComponent implements OnInit{
   public cantidasAnimales: number;
   public responseRequest: ResponseRequest;
   public contentModal:Animal;
-  public urlConsulta:string;
+  public urlConsultaImagenes:string;
+  public urlParaRedireccionAdoptar:string;
+  public urlParaRedireccionApadrinar:string;
   public validadorCargando:boolean = true;
   public mensaje: string;
 
@@ -180,10 +182,15 @@ export class PeluditosComponent implements OnInit{
     let ubicacionActual = window.location.href;
     console.log(ubicacionActual);
     if (ubicacionActual.indexOf("localhost") > 0 || ubicacionActual.indexOf("127.0.0.1") > 0){
-      this.urlConsulta = "../../assets/image/";
+      this.urlConsultaImagenes = "../../assets/image/";
+      this.urlParaRedireccionAdoptar = "/#/adoptar?index=";
+      this.urlParaRedireccionApadrinar = "/#/apadrinar?index=";
     }
     else {
-      this.urlConsulta = "assets/image/";
+      let extraerDominio = ubicacionActual.split("/#/");
+      this.urlConsultaImagenes = "assets/image/";
+      this.urlParaRedireccionAdoptar = extraerDominio[0]+"/#/adoptar?index=";
+      this.urlParaRedireccionApadrinar = extraerDominio[0]+"/#/apadrinar?index=";
     }
   }
 
