@@ -2,6 +2,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IgxCarouselModule, IgxSliderModule } from "igniteui-angular";
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,7 +45,7 @@ import { FiltroComponentComponent } from './feature/peluditos-component/filtro-c
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [HttpgeneralService],
+  providers: [HttpgeneralService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -3,6 +3,12 @@ body{
   font-family: 'Muli', sans-serif;
   background:#ddd;
 }
+
+.spinner-border {
+  --bs-spinner-width: 5rem;
+  --bs-spinner-height: 5rem;
+}
+
 .shell{
   padding:80px 0;
 }

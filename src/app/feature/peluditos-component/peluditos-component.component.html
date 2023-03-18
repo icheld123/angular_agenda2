@@ -1,42 +1,49 @@
 <app-filtro-component></app-filtro-component>
 
 <div class="container text-center">
-
-  <h2>Peluditos esperando por ti!</h2>
-  <span>Cantidad: {{cantidasAnimales}}</span>
+  <div *ngIf="!validadorCargando">
+    <h2>{{mensaje}}</h2>
+    <span>Cantidad: {{cantidasAnimales}}</span>
   </div>
+</div>
 
-  <div class="shell">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3" *ngFor = "let animal of animalesFiltrados; index as i">
-          <div class="wsk-cp-product">
-            <div class="wsk-cp-img">
-              <img src={{urlConsulta+animal.imagen}} alt="Product" class="img-responsive" />
+<div class="d-flex justify-content-center" *ngIf="validadorCargando">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<div *ngIf="!validadorCargando" class="shell">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3" *ngFor = "let animal of animalesFiltrados; index as i">
+        <div class="wsk-cp-product">
+          <div class="wsk-cp-img">
+            <img src={{urlConsulta+animal.imagen}} alt="Product" class="img-responsive" />
+          </div>
+          <div class="wsk-cp-text">
+            <div class="category">
+              <span>{{animal.especie}}</span>
             </div>
-            <div class="wsk-cp-text">
-              <div class="category">
-                <span>{{animal.especie}}</span>
-              </div>
-              <div class="title-product">
-                <h3>{{animal.nombre}}</h3>
-              </div>
-              <div class="description-prod">
-                <p>Edad: {{animal.edad}} meses</p>
-                <p>Raza: {{animal.raza}}</p>
-                <p>Tamaño: {{animal.tamano}}</p>
-                <button (click)="cambiarContenidoModal(animal)" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">Conoce mas sobre mi</button>
-              </div>
-              <div class="card-footer">
-                <div class="wcf-left"><a href="/adoptar?index={{animal.id}}" class="btn-peluditos"><i class="fa fa-paw"></i> Adoptar</a></div>
-                <div class="wcf-right"><a href="/apadrinar?index={{animal.id}}" class="btn-peluditos"><i class="fa fa-handshake-o"></i> Ayudar</a></div>
-              </div>
+            <div class="title-product">
+              <h3>{{animal.nombre}}</h3>
+            </div>
+            <div class="description-prod">
+              <p>Edad: {{animal.edad}} meses</p>
+              <p>Raza: {{animal.raza}}</p>
+              <p>Tamaño: {{animal.tamano}}</p>
+              <button (click)="cambiarContenidoModal(animal)" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">Conoce mas sobre mi</button>
+            </div>
+            <div class="card-footer">
+              <div class="wcf-left"><a href="/adoptar?index={{animal.id}}" class="btn-peluditos"><i class="fa fa-paw"></i> Adoptar</a></div>
+              <div class="wcf-right"><a href="/apadrinar?index={{animal.id}}" class="btn-peluditos"><i class="fa fa-handshake-o"></i> Ayudar</a></div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 
 <div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" style="display: none;" aria-hidden="true">
