@@ -26,6 +26,8 @@ export class FormularioComponentComponent implements OnInit {
   public responseRequest: ResponseRequest;
   public paramsMap: Map<string, string>;
   public ubicacionPeludoId: number;
+  public existeParam: boolean;
+  public animalElegido: Animal;
 
   // Mascotas: any = mascotas;
   // Nacionalidad: any = nacionalidades;
@@ -37,13 +39,17 @@ export class FormularioComponentComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.paramsMap = this.obtenerParametros();
-    console.log(this.paramsMap);
-    let paramPeludo = this.paramsMap.get("index");
-    if (paramPeludo != null){
-      this.ubicacionPeludoId = +paramPeludo - 1;
+    this.existeParam = false;
+    if (window.location.href.indexOf("?") > 0) {
+      this.paramsMap = this.obtenerParametros();
+      console.log(this.paramsMap);
+      let paramPeludo = this.paramsMap.get("index");
+      if (paramPeludo != null){
+        this.ubicacionPeludoId = +paramPeludo - 1;
+      }
+      console.log("id: " + this.ubicacionPeludoId);
+      this.existeParam = true;
     }
-    console.log("id: " + this.ubicacionPeludoId);
   }
 
   public obtenerParametros(){
@@ -69,7 +75,9 @@ export class FormularioComponentComponent implements OnInit {
                               this.stringToBoolean(element[11]),element[12],element[13],element[14],element[15],element[16],element[17]);
       this.peludos.push(animal);
     }
-    console.log(this.peludos[this.ubicacionPeludoId]);
+
+    this.animalElegido = this.peludos[this.ubicacionPeludoId];
+    //console.log(this.peludos[this.ubicacionPeludoId]);
   }
 
   public stringToBoolean(valueString: string){
