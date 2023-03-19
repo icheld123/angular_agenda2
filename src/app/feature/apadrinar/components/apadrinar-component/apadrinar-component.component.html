@@ -1,0 +1,162 @@
+<div class="d-flex justify-content-center mt-3" *ngIf="animalElegido">
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src={{imagenPeludo}} class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{animalElegido.nombre}}</h5>
+          <p class="card-text"><strong>Edad:</strong> {{animalElegido.edad}} meses, <strong>raza</strong>: {{animalElegido.raza}}, <strong>tamaño:</strong> {{animalElegido.tamano}} y <strong>sexo:</strong> {{animalElegido.sexo}}</p>
+          <p class="card-text"><small class="text-muted">Si estas seguro de que es a {{animalElegido.nombre}} a quien quieres ayudar, indicanos cómo quieres ayudarla.</small></p>
+          <p>
+            <button class="btn-ayudar m-1" data-bs-toggle="modal" data-bs-target="#modalDonar"><i class="fa fa-money me-3"></i>Donando</button>
+            <button class="btn-ayudar m-1" data-bs-toggle="modal" data-bs-target="#modalApadrinar"><i class="fa fa-home me-3"></i>Apadrinando</button>
+            <button class="btn-ayudar m-1" data-bs-toggle="modal" data-bs-target="#modalRegalar"><i class="fa fa-gift me-3"></i>Voy a dar...</button>
+            <button class="btn-ayudar m-1" data-bs-toggle="modal" data-bs-target="#modalUnirme"><i class="fa fa-medkit me-3"></i>Uniendome</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center mt-3" *ngIf="!animalElegido">
+  <div class="container text-center mt-3">
+      <h2>Recuerda que puedes ayudar a nuestros peluditos de muchas formas!</h2>
+      <div class="container mt-5 mb-5">
+        <button class="btn-ayudar m-1 p-3" data-bs-toggle="modal" data-bs-target="#modalDonar"><i class="fa fa-money me-3"></i>Donando</button>
+        <button class="btn-ayudar m-1 p-3" data-bs-toggle="modal" data-bs-target="#modalApadrinar"><i class="fa fa-home me-3"></i>Apadrinando</button>
+        <button class="btn-ayudar m-1 p-3" data-bs-toggle="modal" data-bs-target="#modalRegalar"><i class="fa fa-gift me-3"></i>Regalando</button>
+        <button class="btn-ayudar m-1 p-3" data-bs-toggle="modal" data-bs-target="#modalUnirme"><i class="fa fa-medkit me-3"></i>Uniendome</button>
+      </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalDonar" tabindex="-1" aria-labelledby="modalDonar" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalDonar">Donar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Nuestros recates implican bastantes gastos de salud y alimentación. Si quieres darnos una patica puedes donarnos a las siguientes cuentas: Nequi/Daviplata 310730766</p>
+      </div>
+      <div class="modal-footer">
+        <a target="_blank" class="btn btn-secondary" style="background-color: #ff2f73;" href="https://recarga.nequi.com.co/bdigitalpsl/#!/">Nequi</a>
+        <a target="_blank" class="btn btn-secondary" style="background-color: #dc3545;" href="https://www.psepagos.co/PSEHostingUI/InvoicesTicketOffice.aspx?ID=2508">Daviplata</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalApadrinar" tabindex="-1" aria-labelledby="modalApadrinar" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalApadrinar">Apadrinar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Si deseas ser padrino o madrina a distancia y apoyar económicamente a nuestros peludos, puedes hacerlo con la cantidad que desees, prefieras y logres..!!</p>
+        <p>Algunos peluditos están en tratamientos especiales o necesidades diferentes, por lo que puedes ser padrino comprandole vacunas, alimento, medicamentos o ayudando con sus examenes</p>
+        <p>Siempre te mantendremos informado del peludo</p>
+      </div>
+      <div class="modal-footer">
+        <a target="_blank" class="btn btn-secondary" style="background-color: #25d366;" href="https://wa.me/+{{numeroTelefono}}?text=Hola, estoy interesado(a) en apadrinar a {{(existeParam)?animalElegido.nombre:'un peludito'}}">Apadrinar</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalRegalar" tabindex="-1" aria-labelledby="modalRegalar" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalRegalar">Regalar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Tenemos puntos de acopio en Bogotá, recibimos:</p>
+        <p>Cobijas, camas, medicamentos, vitaminas, collares, desparasitantes, antipulgas, engystol, mirrapel, comida gato y perro cachorro o adulto, arena, periodico, areneras, baxidin, probioticos.</p>
+      </div>
+      <div class="modal-footer">
+        <a target="_blank" class="btn btn-secondary" style="background-color: #25d366;" href="https://wa.me/+{{numeroTelefono}}?text=Hola, me gustaría donar algunas cosas para {{(existeParam)?animalElegido.nombre:'un peludito'}}">Donar</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalUnirme" tabindex="-1" aria-labelledby="modalUnirme" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalUnirme">Unirme</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Puedes ayudar a los peluditos difundiendonos y siendo hogar de paso.
+      </div>
+      <div class="modal-footer">
+        <a target="_blank" class="btn btn-secondary" style="background-color: #25d366;" href="https://wa.me/+{{numeroTelefono}}?text=Hola, estoy interesado(a) en ser hogar de paso de {{(existeParam)?animalElegido.nombre:'un peludito'}}">Quiero ser hogar de paso</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- <div class="d-flex justify-content-center m-5">
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card border-dark mb-3 h-100" >
+        <div class="card-header text-center">Donar</div>
+        <div class="card-body">
+          <p class="card-text">Nuestros recates implican bastantes gastos de salud y alimentación. Si quieres darnos una patica puedes donarnos a las siguientes cuentas.</p>
+        </div>
+        <div class="card-footer border-dark">Footer</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-dark mb-3 h-100" >
+        <div class="card-header text-center">Apadrinar</div>
+        <div class="card-body">
+          <p class="card-text">Si deseas ser padrino o madrina a distancia y apoyar económicamente a nuestros peludos, puedes hacerlo con la cantidad que desees, prefieras y logres..!!</p>
+        </div>
+        <div class="card-footer border-dark">Footer</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-dark mb-3 h-100" >
+        <div class="card-header">Cualquier aporte suma</div>
+        <div class="card-body">
+          <p class="card-text">Tenemos puntos de acopio en Bogotá, recibimos:</p>
+          <p class="card-text">Cobijas, camas, medicamentos, vitaminas, collares, desparasitantes, antipulgas, engystol, mirrapel, comida gato y perro cachorro o adulto, arena, periodico, areneras, baxidin, probioticos.</p>
+        </div>
+        <div class="card-footer border-dark">Footer</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-dark mb-3 h-100" >
+        <div class="card-header">Unete</div>
+        <div class="card-body">
+          <p class="card-text">Difundiendo o siendo hogar de paso</p>
+        </div>
+        <div class="card-footer border-dark">Footer</div>
+      </div>
+    </div>
+  </div>
+
+</div> -->

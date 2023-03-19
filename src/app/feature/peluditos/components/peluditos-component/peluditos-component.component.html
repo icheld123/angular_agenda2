@@ -1,6 +1,6 @@
 <app-filtro-component></app-filtro-component>
 
-<div class="container text-center">
+<div class="container text-center mt-3">
   <div *ngIf="!validadorCargando">
     <h2>{{mensaje}}</h2>
     <span>Cantidad: {{cantidasAnimales}}</span>
@@ -19,7 +19,7 @@
       <div class="col-md-3" *ngFor = "let animal of animalesFiltrados; index as i">
         <div class="wsk-cp-product">
           <div class="wsk-cp-img">
-            <img src={{urlConsultaImagenes+animal.imagen}} alt="Product" class="img-responsive" />
+            <img src={{paths.pathImagenes+animal.imagen}} alt="Product" class="img-responsive" />
           </div>
           <div class="wsk-cp-text">
             <div class="category">
@@ -35,8 +35,8 @@
               <button (click)="cambiarContenidoModal(animal)" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">Conoce mas sobre mi</button>
             </div>
             <div class="card-footer">
-              <div class="wcf-left"><a href={{urlParaRedireccionAdoptar+animal.id}} class="btn-peluditos"><i class="fa fa-paw"></i> Adoptar</a></div>
-              <div class="wcf-right"><a href={{urlParaRedireccionApadrinar+animal.id}} class="btn-peluditos"><i class="fa fa-handshake-o"></i> Ayudar</a></div>
+              <div class="wcf-left"><a href={{paths.pathAdoptar+animal.id}} class="btn-peluditos"><i class="fa fa-paw"></i> Adoptar</a></div>
+              <div class="wcf-right"><a href={{paths.pathApadrinar+animal.id}} class="btn-peluditos"><i class="fa fa-handshake-o"></i> Ayudar</a></div>
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@
   </div>
 </div>
 
-<app-filtro-component></app-filtro-component>
+
 
 
 

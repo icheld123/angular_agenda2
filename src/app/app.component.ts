@@ -12,7 +12,7 @@ export class AppComponent {
     {url: '/inicio', nombre: 'Inicio'},
     {url: '/peluditos', nombre: 'Peluditos'},
     {url: '/adoptar', nombre: 'Adoptar'},
-    {url: '/apadrinar', nombre: 'Apadrinar'}
+    {url: '/ayudar', nombre: 'Ayudar'}
   ];
 
 }

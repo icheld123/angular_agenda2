@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Animal } from 'src/app/shared/model/animal';
-import { HttpgeneralService } from 'src/app/shared/service/httpgeneral.service';
-import { environment } from 'src/environments/environment';
-import { PeluditosComponent } from '../peluditos-component.component';
+import { Animal } from 'src/app/feature/shared/model/animal';
+import { PeluditosComponent } from '../peluditos-component/peluditos-component.component';
 
 const DATOS_EN_CATEGORIAS: object = {
   perro: "especie",

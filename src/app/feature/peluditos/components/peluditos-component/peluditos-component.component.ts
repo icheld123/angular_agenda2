@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Animal } from 'src/app/shared/model/animal';
-import { ResponseRequest } from 'src/app/shared/model/responseRequest';
-import { HttpgeneralService } from 'src/app/shared/service/httpgeneral.service';
+import { Animal } from 'src/app/feature/shared/model/animal';
+import { ResponseRequest } from 'src/app/feature/shared/model/responseRequest';
+import { AnimalesService } from 'src/app/feature/shared/service/animales.service';
 import { environment } from 'src/environments/environment';
 // import { ModalInfoextraComponent } from './modal-infoextra/modal-infoextra.component';
 
@@ -13,6 +13,8 @@ const params = {
 const MENSAJE_BUSQUEDA_POSITIVA = "¡Hay peluditos esperando por ti!";
 const MENSAJE_BUSQUEDA_NEGATIVA = "No tenemos peluditos en este momento";
 const MENSAJE_BUSQUEDA_NEGATIVA_CON_FILTRO = "No se obtuvieron resultados en la busqueda, pruebe nuevamente.";
+const PATH_CONSULTA_IMAGENES_LOCAL = "../../assets/image/";
+const PATH_CONSULTA_IMAGENES_PDN = "assets/image/";
 
 @Component({
   selector: 'app-peluditos-component',
@@ -31,8 +33,13 @@ export class PeluditosComponent implements OnInit{
   public urlParaRedireccionApadrinar:string;
   public validadorCargando:boolean = true;
   public mensaje: string;
+  public paths = {
+    pathImagenes: "",
+    pathAdoptar: "/#/adoptar?index=",
+    pathApadrinar: "/#/ayudar?index="
+  }
 
-  constructor(private httpService: HttpgeneralService){
+  constructor(protected animalesService: AnimalesService){
     this.listarPeludos();
   }
 
@@ -40,20 +47,11 @@ export class PeluditosComponent implements OnInit{
     this.validadorCargando = true;
     this.animales = [];
     this.animalesFiltrados = [];
-    this.responseRequest = await this.httpService.get(environment.endpoint, environment.apiRoute, params).toPromise().then();
-    //console.log("responseRequest:" + this.responseRequest);
+    this.responseRequest = await this.animalesService.obtenerPeludos(environment.endpoint, environment.apiRoute, params).toPromise().then();
 
     if (this.responseRequest.values.length > 0){
-      for (let index = 1; index < this.responseRequest.values.length; index++) {
-        const element = this.responseRequest.values[index];
-        let animal = new Animal(parseInt(element[0]),element[1],parseInt(element[2]),element[3],element[4],
-                                element[5],this.stringToBoolean(element[6]),
-                                this.stringToBoolean(element[7]),this.stringToBoolean(element[8]),
-                                this.stringToBoolean(element[9]),this.stringToBoolean(element[10]),
-                                this.stringToBoolean(element[11]),element[12],element[13],element[14],element[15],element[16],element[17]);
-        this.animales.push(animal);
-        this.animalesFiltrados.push(animal);
-      }
+      this.animales = PeluditosComponent.mapearArrayPeludos(this.responseRequest.values);
+      this.animalesFiltrados = this.animales;
       this.validadorCargando = false;
       this.mensaje = MENSAJE_BUSQUEDA_POSITIVA;
       this.cantidasAnimales = this.animalesFiltrados.length;
@@ -62,7 +60,20 @@ export class PeluditosComponent implements OnInit{
       this.mensaje = MENSAJE_BUSQUEDA_NEGATIVA;
       this.cantidasAnimales = 0;
     }
-    //console.log(this.animales);
+  }
+
+  static mapearArrayPeludos(values: string[]){
+    let arrayDeObjetos = [];
+    for (let index = 1; index < values.length; index++) {
+      const element = values[index];
+      let animal = new Animal(parseInt(element[0]),element[1],parseInt(element[2]),element[3],element[4],
+                              element[5],PeluditosComponent.stringToBoolean(element[6]),
+                              PeluditosComponent.stringToBoolean(element[7]),PeluditosComponent.stringToBoolean(element[8]),
+                              PeluditosComponent.stringToBoolean(element[9]),PeluditosComponent.stringToBoolean(element[10]),
+                              PeluditosComponent.stringToBoolean(element[11]),element[12],element[13],element[14],element[15],element[16],element[17]);
+      arrayDeObjetos.push(animal);
+    }
+    return arrayDeObjetos;
   }
 
   async cambiarContenidoModal(animal: Animal){
@@ -172,26 +183,20 @@ export class PeluditosComponent implements OnInit{
     return  llavesAgrupadasPorCategoriaExcel
   }
 
-  public stringToBoolean(valueString: string){
+  static stringToBoolean(valueString: string){
     if (valueString.toLowerCase() === "true") return true;
     else return false;
   }
 
-  ngOnInit(){
-    this.contentModal = new Animal(0,"",0,"","","",false,false,false,false,false,false,"","","","","","");
+  static identificarPathImagenes(){
     let ubicacionActual = window.location.href;
     console.log(ubicacionActual);
-    if (ubicacionActual.indexOf("localhost") > 0 || ubicacionActual.indexOf("127.0.0.1") > 0){
-      this.urlConsultaImagenes = "../../assets/image/";
-      this.urlParaRedireccionAdoptar = "/#/adoptar?index=";
-      this.urlParaRedireccionApadrinar = "/#/apadrinar?index=";
-    }
-    else {
-      let extraerDominio = ubicacionActual.split("/#/");
-      this.urlConsultaImagenes = "assets/image/";
-      this.urlParaRedireccionAdoptar = extraerDominio[0]+"/#/adoptar?index=";
-      this.urlParaRedireccionApadrinar = extraerDominio[0]+"/#/apadrinar?index=";
-    }
+    return (ubicacionActual.indexOf("localhost") > 0 || ubicacionActual.indexOf("127.0.0.1") > 0) ? PATH_CONSULTA_IMAGENES_LOCAL : PATH_CONSULTA_IMAGENES_PDN
+  }
+
+  ngOnInit(){
+    this.contentModal = new Animal(0,"",0,"","","",false,false,false,false,false,false,"","","","","","");
+    this.paths.pathImagenes = PeluditosComponent.identificarPathImagenes();
   }
 
 }

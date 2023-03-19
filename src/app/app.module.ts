@@ -1,52 +1,31 @@
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { IgxCarouselModule, IgxSliderModule } from "igniteui-angular";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-
-import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from './app.component';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponentComponent } from './core/components/navbar-component/navbar-component.component';
-import { ToolbarComponent } from './core/components/toolbar-component/toolbar-component.component';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpgeneralService } from './shared/service/httpgeneral.service';
-import { InicioComponentComponent } from './feature/inicio-component/inicio-component.component';
-import { FormularioComponentComponent } from './feature/formulario-component/formulario-component.component';
-import { PeluditosComponent } from './feature/peluditos-component/peluditos-component.component';
-import { ModalComponentComponent } from './feature/modal-component/modal-component.component';
-import { ApadrinarComponent } from './feature/apadrinar-component/apadrinar-component.component';
-import { SliderComponentComponent } from './feature/inicio-component/slider-component/slider-component.component';
-import { FiltroComponentComponent } from './feature/peluditos-component/filtro-component/filtro-component.component';
+import { PeluditosModule } from './feature/peluditos/components/peluditos.module';
+import { InicioModule } from './feature/inicio/inicio.module';
+import { AdoptarComponent } from './feature/adoptar/components/formulario-component/adoptar-component.component';
+import { ApadrinarComponent } from './feature/apadrinar/components/apadrinar-component/apadrinar-component.component';
+import { CoreModule } from './core/core.module';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    InicioComponentComponent,
-    FormularioComponentComponent,
-    PeluditosComponent,
-    NavbarComponentComponent,
-    ToolbarComponent,
-    ModalComponentComponent,
-    SliderComponentComponent,
-    ApadrinarComponent,
-    FiltroComponentComponent
+    AdoptarComponent,
+    ApadrinarComponent
   ],
   imports: [
-    ReactiveFormsModule,
-    FormsModule,
-    BrowserModule,
     AppRoutingModule,
-    NgxPaginationModule,
-    IgxCarouselModule,
-    IgxSliderModule,
-    BrowserAnimationsModule,
-    HttpClientModule
+    PeluditosModule,
+    InicioModule,
+    CoreModule,
+    BrowserModule
   ],
-  providers: [HttpgeneralService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  // exports: [CommonModule],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
+  // schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {
-}
+export class AppModule { }
