@@ -16,7 +16,7 @@
 <div *ngIf="!validadorCargando" class="shell">
   <div class="container">
     <div class="row">
-      <div class="col-md-3" *ngFor = "let animal of animalesFiltrados; index as i">
+      <div class="col-md-3" *ngFor = "let animal of animalesFiltrados | paginate: { itemsPerPage: peludosPorPagina, currentPage: paginaActual }">
         <div class="wsk-cp-product">
           <div class="wsk-cp-img">
             <img src={{paths.pathImagenes+animal.imagen}} alt="Product" class="img-responsive" />
@@ -44,6 +44,10 @@
     </div>
   </div>
 </div>
+
+<pagination-controls class="m-5 text-center" (pageChange)="paginaActual = $event" ></pagination-controls>
+
+
 
 
 <div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" style="display: none;" aria-hidden="true">

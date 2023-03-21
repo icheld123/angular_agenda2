@@ -15,6 +15,7 @@ const MENSAJE_BUSQUEDA_NEGATIVA = "No tenemos peluditos en este momento";
 const MENSAJE_BUSQUEDA_NEGATIVA_CON_FILTRO = "No se obtuvieron resultados en la busqueda, pruebe nuevamente.";
 const PATH_CONSULTA_IMAGENES_LOCAL = "../../assets/image/";
 const PATH_CONSULTA_IMAGENES_PDN = "assets/image/";
+const PELUDOS_POR_PAGINA = 4;
 
 @Component({
   selector: 'app-peluditos-component',
@@ -23,6 +24,8 @@ const PATH_CONSULTA_IMAGENES_PDN = "assets/image/";
 })
 export class PeluditosComponent implements OnInit{
 
+  public peludosPorPagina: number = PELUDOS_POR_PAGINA;
+  public paginaActual: number  = 1;
   public animales:Array<Animal>;
   public animalesFiltrados:Array<Animal>;
   public cantidasAnimales: number;
@@ -44,6 +47,7 @@ export class PeluditosComponent implements OnInit{
   }
 
   async listarPeludos(){
+    this.paginaActual = 1;
     this.validadorCargando = true;
     this.animales = [];
     this.animalesFiltrados = [];
