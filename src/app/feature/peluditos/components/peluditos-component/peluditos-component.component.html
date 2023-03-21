@@ -45,10 +45,11 @@
   </div>
 </div>
 
-<pagination-controls class="m-5 text-center" (pageChange)="paginaActual = $event" ></pagination-controls>
-
-
-
+<pagination-controls class="m-5 text-center" (pageChange)="paginaActual = $event"
+                                             [autoHide]="true"
+                                             previousLabel="Atras"
+                                             nextLabel="Siguiente">
+                                            </pagination-controls>
 
 <div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" style="display: none;" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
