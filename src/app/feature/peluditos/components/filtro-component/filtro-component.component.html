@@ -12,7 +12,7 @@
 <body>
   <div class="sidenav" id="mySidenav" [style.width]="valueWidth">
     <div class="container-md" id="filtros">
-        <button type="button" class="btn-close" aria-label="Close" (click)="closeFilter()"></button>
+        <a type="button" class="closebtn" aria-label="Close" (click)="closeFilter()">&times;</a>
         <!-- <button type="button" class="btn-close" aria-label="Close" (click)="closeFilter()"></button> -->
 
 
@@ -119,7 +119,9 @@
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary" id="filtrarEspecifico" onclick="iniciarFiltro()">Filtrar</button>
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary mt-3" id="filtrarEspecifico" onclick="iniciarFiltro()">Filtrar</button>
+            </div>
             <!-- <button type="submit" style="visibility: hidden;" class="btn btn-primary" id="filtrarTodo" onclick="iniciar()">Ver todos</button> -->
         </form>
 

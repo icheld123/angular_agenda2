@@ -40,11 +40,13 @@ export class FiltroComponentComponent implements OnInit {
   public openFilter() {
     this.valueWidth = "250px";
     this.showButtonOpenFilter = false;
+    this.peluditosComponent.cambiarValueMarginLeft("250px");
   }
 
   public closeFilter() {
     this.valueWidth = "0px";
     this.showButtonOpenFilter = true;
+    this.peluditosComponent.cambiarValueMarginLeft("0px");
   }
 
   async iniciarFiltro(){

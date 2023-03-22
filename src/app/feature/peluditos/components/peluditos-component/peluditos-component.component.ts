@@ -36,6 +36,7 @@ export class PeluditosComponent implements OnInit{
   public urlParaRedireccionApadrinar:string;
   public validadorCargando:boolean = true;
   public mensaje: string;
+  public valueMarginLeft: string;
   public paths = {
     pathImagenes: "",
     pathAdoptar: "/#/adoptar?index=",
@@ -82,6 +83,10 @@ export class PeluditosComponent implements OnInit{
 
   async cambiarContenidoModal(animal: Animal){
     this.contentModal = animal;
+  }
+
+  async cambiarValueMarginLeft(value: string){
+    this.valueMarginLeft = value;
   }
 
   async filtrarPeludos(datosForm: any, categoriasFiltro: any, categoriasUnicas:Array<string>){
