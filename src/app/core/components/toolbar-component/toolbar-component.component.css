@@ -1,43 +1,4 @@
-nav {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 6.5em;
-    background-color:rgb(157, 195, 246);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    z-index: 99;
-    padding: 0 1em;
-}
-.nav-bar{
-    width: 90%;
-    display: flex;
-    align-items: center;
-    margin: auto;
-    justify-content: space-between;
-}
-nav .nav-bar img{
-    width: 5em;
-}
-nav .nav-bar .menu ul li{
-    font-size: 1em;
-    display: inline;
-    margin: auto 1em;
-    padding: 1em;
-}
-nav .nav-bar .menu ul li:hover{
-    background-color: rgb(98, 165, 251);
-    border-radius: 1em;
-}
-nav .nav-bar .menu ul li a{
-    cursor: pointer;
-    text-decoration: none;
-    font-family: 'Unbounded', cursive;
-    font-weight: 600;
-    color: black;
-}
-nav .nav-bar .menu .sub-menu{
-    display: none;
+.navbar {
+  /* background-color: #fcdada; */
+  background-color: #e9ec65;
 }

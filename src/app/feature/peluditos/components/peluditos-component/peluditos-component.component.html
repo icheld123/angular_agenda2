@@ -31,9 +31,8 @@
               </div>
               <div class="description-prod">
                 <p>Edad: {{animal.edad}} meses</p>
-                <p>Raza: {{animal.raza}}</p>
                 <p>Tamaño: {{animal.tamano}}</p>
-                <button id="ver_mas" (click)="cambiarContenidoModal(animal)" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable"><span>Conoce mas sobre mi</span></button>
+                <button class="btn-conoce" id="ver_mas" (click)="cambiarContenidoModal(animal)" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable"><span>Conoce mas sobre mi</span></button>
               </div>
               <div class="card-footer">
                 <div class="wcf-left"><a href={{paths.pathAdoptar+animal.id}} class="btn-peluditos"><i class="fa fa-paw"></i> Adoptar</a></div>
@@ -63,7 +62,7 @@
       <div class="modal-body">
         <p>Especie: {{contentModal.especie}}</p>
         <p>Sexo: {{contentModal.sexo}}</p>
-        <p>Edad: {{contentModal.edad}}</p>
+        <p>Edad: {{contentModal.edad}} meses</p>
         <p>Raza: {{contentModal.raza}}</p>
         <p>Vacunas: {{(contentModal.vacunas) ? "✅" : "❌"}}</p>
         <p>{{(contentModal.sexo.toLowerCase() == "macho") ? "Esterilizado: " : "Esterilizada: "}} {{(contentModal.esterilizacion) ? "✅" : "❌"}}</p>

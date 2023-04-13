@@ -1,21 +1,33 @@
-.slideshow-container {
+.carousel-control-next-icon, .carousel-control-prev-icon{
+  background-color: black;
+  border-radius: 0.9rem;
+}
+
+.carousel-dark .carousel-caption {
+  background-color: white;
+  opacity: 0.5;
+}
+
+
+
+
+/* .slideshow-container {
     max-width: 1200px;
     position: relative;
     margin: auto;
     text-align:center;
   }
-  
+
   .slideshow-container img{
     display: none;
   }
-  
+
   .slideshow-container img.image-active {
       display: block;
       width: 30%;
       margin: auto;
   }
-  
-  /* The dots/indicators */
+
   .dot {
     cursor: pointer;
     height: 15px;
@@ -26,7 +38,7 @@
     display: inline-block;
     transition: background-color 0.6s ease;
   }
-  
+
   .active, .dot:hover {
     background-color: #717171;
-  }
+  } */

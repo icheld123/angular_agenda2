@@ -1,4 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { Noticia } from 'src/app/feature/shared/model/noticia';
+import { ResponseRequest } from 'src/app/feature/shared/model/responseRequest';
+import { AnimalesService } from 'src/app/feature/shared/service/animales.service';
+import { environment } from 'src/environments/environment';
+
+const params = {
+  majorDimension: environment.majorDimension,
+  key: environment.key
+};
+const PATH_CONSULTA_IMAGENES_LOCAL = "../../../../../assets/image/noticias";
+const PATH_CONSULTA_IMAGENES_PDN = "assets/image/noticias";
 
 @Component({
   selector: 'app-slider-component',
@@ -7,43 +18,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SliderComponentComponent implements OnInit {
   public slideIndex: number = 0;
-  public images = [
-    {
-      id: 1,
-      src: 'https://www.freeiconspng.com/thumbs/dog-png/dog-png-30.png'
-    },
-    {
-      id: 2,
-      src: 'https://purepng.com/public/uploads/large/purepng.com-dog-pngdogdoggycutehoundblack-snoutgerman-shepperdlooking-to-camera-451520332369fzowk.png'
-    },
-    {
-      id: 3,
-      src: 'https://www.freeiconspng.com/thumbs/dog-png/dog-png-30.png'
-    }
-  ];
-  selectImage(index: number) {
-    console.log("Index: " + index);
-    this.slideIndex = index;
-    console.log("Selected Index: " + this.slideIndex);
+  public responseRequest: ResponseRequest;
+  public noticias: Noticia[];
+  public urlImage: string;
+
+  constructor(protected animalesService: AnimalesService){
+    this.listarNoticias();
   }
 
-  showSlides(){
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    for (i = 0; i < this.images.length; i++) {
-      (<HTMLElement>slides[i]).style.display = "none";
+  async listarNoticias(){
+    this.responseRequest = await this.animalesService.obtenerPeludos(environment.endpoint, environment.apiRouteNoticias, params).toPromise().then();
+    if (this.responseRequest.values.length > 0){
+      console.log("existen noticias");
+      this.noticias = SliderComponentComponent.mapearArrayNoticias(this.responseRequest.values);
+      console.log(this.noticias);
     }
-    this.slideIndex++;
-    if (this.slideIndex > this.images.length) {this.slideIndex = 1}
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
+    else {
+      console.log("No existen noticias");
     }
-    (<HTMLElement>slides[this.slideIndex - 1]).style.display = "block";
-    dots[this.slideIndex - 1].className += " active";
-    setTimeout(this.showSlides, 200);
   }
+
+  static mapearArrayNoticias(values: string[]){
+    let arrayDeObjetos = [];
+    for (let index = 1; index < values.length; index++) {
+      const element = values[index];
+      let noticia = new Noticia(element[0],element[1],element[2]);
+      arrayDeObjetos.push(noticia);
+    }
+    return arrayDeObjetos;
+  }
+
+  static identificarPathImagenesNoticias(){
+    let ubicacionActual = window.location.href;
+    console.log(ubicacionActual);
+    return (ubicacionActual.indexOf("localhost") > 0 || ubicacionActual.indexOf("127.0.0.1") > 0) ? PATH_CONSULTA_IMAGENES_LOCAL : PATH_CONSULTA_IMAGENES_PDN
+  }
+
   ngOnInit() {
-    this.showSlides();
+    this.urlImage = SliderComponentComponent.identificarPathImagenesNoticias();
   }
 }

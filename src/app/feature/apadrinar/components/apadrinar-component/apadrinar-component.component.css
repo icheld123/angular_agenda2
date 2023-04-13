@@ -1,6 +1,6 @@
 
 .btn-ayudar {
-  background-color: DodgerBlue;
+  background-color: #69625f;
   border: none;
   color: white;
   padding: 6px 8px;
@@ -10,5 +10,5 @@
 
 /* Darker background on mouse-over */
 .btn-ayudar:hover {
-  background-color: RoyalBlue;
+  background-color: #cccd2a;
 }

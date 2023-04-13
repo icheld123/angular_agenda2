@@ -71,9 +71,9 @@ body{
 }
 .wsk-cp-text .category > span{
   padding: 12px 30px;
-  border: 1px solid #313131;
-  background:#212121;
-  color:#fff;
+  border: 1px solid #69625f;
+  background:#69625f;
+  color:white;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   border-radius:27px;
   transition: all 0.05s ease-in-out;
@@ -138,24 +138,6 @@ body{
   font-weight:bold;
 }
 
-a.buy-btn{
-  display:block;
-  color:#212121;
-  text-align:center;
-  font-size: 18px;
-  width:35px;
-  height:35px;
-  line-height:35px;
-  border-radius:50%;
-  border:1px solid #212121;
-  transition: all 0.2s ease-in-out;
-}
-a.buy-btn:hover , a.buy-btn:active, a.buy-btn:focus{
-  border-color: #FF9800;
-  background: #FF9800;
-  color: #fff;
-  text-decoration:none;
-}
 .wsk-btn{
   display:inline-block;
   color:#212121;
@@ -180,8 +162,9 @@ a.buy-btn:hover , a.buy-btn:active, a.buy-btn:focus{
 }
 
 .btn-peluditos {
-  background-color: DodgerBlue; /* Blue background */
+  background-color: #69625f; /* Blue background */
   border: none; /* Remove borders */
+  border-radius: 5px;
   color: white; /* White text */
   padding: 12px 16px; /* Some padding */
   font-size: 16px; /* Set a font size */
@@ -189,9 +172,30 @@ a.buy-btn:hover , a.buy-btn:active, a.buy-btn:focus{
   text-decoration: none;
 }
 
-/* Darker background on mouse-over */
+.btn-conoce{
+  background-color: #69625f; /* Blue background */
+  color: white;
+  border: none; /* Remove borders */
+  border-radius: 5px;
+  padding: 5px 8px; /* Some padding */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
 .btn-peluditos:hover {
-  background-color: RoyalBlue;
+  background-color: #cccd2a;
+}
+
+/* Darker background on mouse-over */
+.btn-conoce:hover {
+  background-color: #cccd2a;
+}
+
+::ng-deep .ngx-pagination .current {
+  background: #69625f!important;
+}
+
+::ng-deep .ngx-pagination a:hover{
+  background: #cccd2a!important;
 }
 
 @media screen and (max-width: 1199px) {
@@ -244,5 +248,7 @@ a.buy-btn:hover , a.buy-btn:active, a.buy-btn:focus{
     content: "Conóceme";
   }
 }
+
+
 
 

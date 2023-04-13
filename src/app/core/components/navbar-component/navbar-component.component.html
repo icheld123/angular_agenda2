@@ -1,13 +1,14 @@
 <nav>
-  <div class="navbar navbar-expand navbar-light bg-light">
-    <div >
-      <ul class="nav nav-tabs">
-        <li class="nav-item" routerLinkActive="active" *ngFor="let item of items; let i as index">
-          <a class="nav-link"  [routerLink]="item.url" routerLinkActive="active">{{item.nombre}}</a>
-        </li>
-      </ul>
+    <div class="navp-brand">
+      <a href="#">
+        <img src="{{imageToolbar}}" width="80" height="80" alt="Logo de la manada de oreo">
+      </a>
     </div>
-  </div>
+    <ul class="navp">
+      <li class="navp-item" routerLinkActive="active" *ngFor="let item of items; let i as index">
+        <a class="navp-link" [routerLink]="item.url" routerLinkActive="active">{{item.nombre}}</a>
+      </li>
+    </ul>
 </nav>
 
 
