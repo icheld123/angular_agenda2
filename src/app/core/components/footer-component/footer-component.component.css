@@ -1,9 +1,18 @@
 footer{
   background-color: #eaee65;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .derechos{
   background-color: #cccd2a;
+}
+
+@media screen and (max-width: 397px) {
+  .col{
+    flex: none;
+  }
 }
 
 

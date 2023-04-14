@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center mt-3" *ngIf="animalElegido">
+<div class="ayudar" *ngIf="animalElegido">
   <div class="card mb-3" style="max-width: 540px;">
     <div class="row g-0">
       <div class="col-md-4">
@@ -9,7 +9,7 @@
           <h5 class="card-title">{{animalElegido.nombre}}</h5>
           <p class="card-text"><strong>Edad:</strong> {{animalElegido.edad}} meses, <strong>raza</strong>: {{animalElegido.raza}}, <strong>tamaño:</strong> {{animalElegido.tamano}} y <strong>sexo:</strong> {{animalElegido.sexo}}</p>
           <p class="card-text"><small class="text-muted">Si estas seguro de que es a {{animalElegido.nombre}} a quien quieres ayudar, indicanos cómo quieres ayudarla.</small></p>
-          <p>
+          <p class="buttons-card">
             <button class="btn-ayudar m-1" data-bs-toggle="modal" data-bs-target="#modalDonar"><i class="fa fa-money me-3"></i>Donando</button>
             <button class="btn-ayudar m-1" data-bs-toggle="modal" data-bs-target="#modalApadrinar"><i class="fa fa-home me-3"></i>Apadrinando</button>
             <button class="btn-ayudar m-1" data-bs-toggle="modal" data-bs-target="#modalRegalar"><i class="fa fa-gift me-3"></i>Voy a dar...</button>

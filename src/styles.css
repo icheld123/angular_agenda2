@@ -12,4 +12,23 @@
 
 body{
     font-family: 'Fira Sans', sans-serif;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 12rem;
 }
+
+dl, ol, ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ol, ul {
+  padding-left: 0;
+}
+
+@media screen and (max-width: 1014px) {
+  body{
+    padding-bottom: 18rem;
+  }
+}
+

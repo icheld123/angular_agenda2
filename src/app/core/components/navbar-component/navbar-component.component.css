@@ -14,6 +14,15 @@ nav {
   flex-wrap: wrap;
 }
 
+.navp-brand img{
+  width: 80px;
+  height: 80px;
+}
+
+.navp-item{
+  margin: 0;
+}
+
 .navp-link{
   color: black;
   border-radius: 10px;
@@ -45,59 +54,17 @@ nav {
 }
 
 @media screen and (max-width: 569px) {
-  .navp-brand{
-    display: none;
+  .navp-brand img{
+    width: 50px;
+    height: 50px;
   }
-
   nav{
     justify-content:center;
-    padding: 1rem 0rem;
+    padding: 0.5rem 0rem;
+    justify-content: none;
   }
-}
 
-/* Tooltip container */
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-}
-
-/* Tooltip text */
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-
-  /* Position the tooltip text */
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -60px;
-
-  /* Fade in tooltip */
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-/* Tooltip arrow */
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
+  .navp-link{
+    font-size:1rem;
+  }
 }

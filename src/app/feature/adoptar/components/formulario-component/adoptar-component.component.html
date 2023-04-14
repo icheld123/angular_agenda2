@@ -1,24 +1,27 @@
 <!-- <h1>Formulario de adopción</h1> -->
 
-<div id="datoAnimal" class="d-flex justify-content-center mt-3" *ngIf="animalElegido">
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src={{imagenPeludo}} class="img-fluid rounded-start" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{{animalElegido.nombre}}</h5>
-          <p class="card-text">Estas cerca de iniciar el proceso de adopción de {{animalElegido.nombre}} ({{animalElegido.especie}}). Recuerda que este peludito tiene las siguientes carácterísticas:</p>
-          <p class="card-text"><strong>Edad:</strong> {{animalElegido.edad}} meses, <strong>raza</strong>: {{animalElegido.raza}}, <strong>tamaño:</strong> {{animalElegido.tamano}} y <strong>sexo:</strong> {{animalElegido.sexo}}</p>
-          <p class="card-text"><small class="text-muted">Si estas seguro de que es a {{animalElegido.nombre}} a quien quieres adoptar llena el formulario de la parte inferior, sino ve a la sección <a href="/#/peluditos">peluditos</a> y busca nuevamente.</small></p>
+<div class="adoptar">
+  <div id="datoAnimal" *ngIf="animalElegido">
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src={{imagenPeludo}} class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{animalElegido.nombre}}</h5>
+            <p class="card-text">Estas cerca de iniciar el proceso de adopción de {{animalElegido.nombre}} ({{animalElegido.especie}}). Recuerda que este peludito tiene las siguientes carácterísticas:</p>
+            <p class="card-text"><strong>Edad:</strong> {{animalElegido.edad}} meses, <strong>raza</strong>: {{animalElegido.raza}}, <strong>tamaño:</strong> {{animalElegido.tamano}} y <strong>sexo:</strong> {{animalElegido.sexo}}</p>
+            <p class="card-text"><small class="text-muted">Si estas seguro de que es a {{animalElegido.nombre}} a quien quieres adoptar llena el formulario de la parte inferior, sino ve a la sección <a href="/#/peluditos">peluditos</a> y busca nuevamente.</small></p>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="container">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfNC5N1fE4zz6x0s1TA2Ivp9vLlgphm931BevVDOYJLIBRKtg/viewform?embedded=true" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+  </div>
 </div>
 
 
-<div class="container mt-3  mb-3">
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfNC5N1fE4zz6x0s1TA2Ivp9vLlgphm931BevVDOYJLIBRKtg/viewform?embedded=true" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
-</div>
